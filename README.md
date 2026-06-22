@@ -10,4 +10,4 @@ Celestial bodies to be included:
     - The moon of the earth
     - The 9 planets
     - The Sun
-We use a coordinate system centered on the sun to do this. 
+We use a coordinate system centered on the sun to do this and an axis aligned with the elliptical plane of the Earth. 

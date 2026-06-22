@@ -1,0 +1,54 @@
+#include<iostream>
+#include<type_traits>
+#include<cmath>
+#pragma once
+
+namespace  SpaceSim{
+    template<typename T> 
+    concept Number = std::is_arithmetic_v<T>;
+
+    template<Number T>
+    class Vector{
+        public:
+            T x, y, z;
+            Vector():x{0}, y{0}, z{0}{}
+            Vector(T _x, T _y, T _z): x(_x), y{_y}, z{_z}{}
+            Vector<T>& operator+=(const Vector<T> &other){
+                this->x+=other.x;
+                this->y+=other.y;
+                this->z+=other.z;
+                return *this;
+            }
+            Vector<T>& operator-=(const Vector<T> &other){
+                this->x-=other.x;
+                this->y-=other.y;
+                this->z-=other.z;
+                return *this;
+            }
+            Vector<T> dot(const Vector<T> &other){
+                return {x*other.x, y*other.y, z*other.z};
+            }
+            T norm(){
+                return std::sqrt(x*x+y*y+z*z);
+            }
+            T square(){
+                return (x*x+y*y+z*z);
+            }
+            Vector<T>& operator=(const Vector<T>& other)=default;
+
+            Vector<T> operator+(Vector<T> other){
+                return other+=*this;
+            }
+            Vector<T> operator-(Vector<T> other){
+                return other-=this;
+            }
+            friend Vector<T>operator*(T data, const Vector<T>& other){
+                return {other.x*data, other.y*data, other.z*data};
+            }
+            friend Vector<T> operator*(const Vector<T>& other, T data){
+                 return {other.x*data, other.y*data, other.z*data};
+            }
+    };
+   
+
+}
