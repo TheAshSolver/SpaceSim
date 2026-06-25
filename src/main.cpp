@@ -2,13 +2,8 @@
 #include<iostream>
 
 int main(){
-    // std::vector<SpaceSim::Planet> planets;
-    // SpaceSim::CelestialBody Sun{.radius = 695700000, .mass = 1.989e30};
-    // planets.emplace_back({})
+    std::vector<SpaceSim::CelestialBody> bodies;
+    //3 bodies first, the sun, the Earth and the Moon
+
     
-    
-
-
-
-
 }

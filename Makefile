@@ -6,9 +6,9 @@ CXXFLAGS := -std=$(CXXSTD) -Wall -Wextra -O2 -Isrc -pthread
 LDFLAGS  := -pthread
 LDLIBS   := -lm
 
-TARGET  := bin/spacesim
+TARGET  := .bin/spacesim
 SRCDIR  := src
-OBJDIR  := build
+OBJDIR  := .build
 
 # Find all .cpp sources under src/ and map them to build/*.o
 SRCS := $(shell find $(SRCDIR) -name '*.cpp')

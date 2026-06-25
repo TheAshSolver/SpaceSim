@@ -25,11 +25,11 @@ namespace  SpaceSim{
                 this->z-=other.z;
                 return *this;
             }
-            Vector<T> dot(const Vector<T> &other){
-                return {x*other.x, y*other.y, z*other.z};
+            T dot(const Vector<T> &other){
+                return x*other.x+ y*other.y+ z*other.z;
             }
-            T norm(){
-                return std::sqrt(x*x+y*y+z*z);
+             T norm(){
+                return std::sqrt(this->x*this->x+this->y*this->y+this->z*this->z);
             }
             T square(){
                 return (x*x+y*y+z*z);
@@ -40,12 +40,18 @@ namespace  SpaceSim{
                 return other+=*this;
             }
             Vector<T> operator-(Vector<T> other){
-                return other-=this;
+                Vector<T> copy = *this;
+                return copy-=other;
             }
-            friend Vector<T>operator*(T data, const Vector<T>& other){
+            Vector<T> operator/(T data){
+                return {this->x/data, this->y/data, this->z/data};
+            }
+            template<Number U>
+            friend Vector<T>operator*(U data, const Vector<T>& other){
                 return {other.x*data, other.y*data, other.z*data};
             }
-            friend Vector<T> operator*(const Vector<T>& other, T data){
+            template<Number U>
+            friend Vector<T> operator*(const Vector<T>& other, U data){
                  return {other.x*data, other.y*data, other.z*data};
             }
     };
