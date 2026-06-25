@@ -6,7 +6,7 @@ namespace SpaceSim{
        position += velocity*dt;
     }
    
-    Planet::Planet(Mass _mass, Length _radius,Vector<Coordinate> _positions, Vector<Coordinate> _velocity, Angle _angle): CelestialBody(_mass, _radius, _positions, _velocity), orbital_tilt(_angle){
+    Planet::Planet(int _id, Mass _mass, Length _radius,Vector<Coordinate> _positions, Vector<Coordinate> _velocity, Angle _angle): CelestialBody(_id, _mass, _radius, _positions, _velocity), orbital_tilt(_angle){
     }
      std::vector<Coordinate> center_of_mass(std::vector<CelestialBody>& bodies){
         Mass total_mass = std::ranges::fold_left(bodies, 0, [](auto x, auto body){ return x+body.mass; });
