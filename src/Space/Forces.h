@@ -5,9 +5,10 @@
 #include<cmath>
 #include<algorithm>
 #include<execution>
+#include<numeric>
 namespace SpaceSim{ 
 
-    Vector<double> gravity_calculator( SpaceSim::CelestialBody body_1, SpaceSim::CelestialBody body_2){
+    Vector<double> gravity_calculator(const SpaceSim::CelestialBody& body_1,const SpaceSim::CelestialBody& body_2){
       return (G*body_1.mass*body_2.mass*(body_2.position-body_1.position))/pow((body_2.position-body_1.position).norm(),3);
     }
     //calculate force with id./ 
@@ -29,7 +30,7 @@ namespace SpaceSim{
     
       
        Vector<double> total_force{};
-       std::for_each(bodies.begin(), bodies.end(), [&](SpaceSim::CelestialBody& current_body){
+       std::for_each(bodies.begin(), bodies.end(), [&](const SpaceSim::CelestialBody& current_body){
             if(current_body.id!= bodies[id].id){
                 total_force+=gravity_calculator(bodies[id], current_body);
             }
